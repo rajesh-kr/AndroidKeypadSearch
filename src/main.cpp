@@ -31,7 +31,7 @@ int main() {
         t9_name = convert_str_t9(name);
         Contact con(name, phone);
         t.insert_node(t9_name, con);
-        std::cout << con.name << ":" << t9_name << std::endl;
+        //std::cout << con.name << ":" << t9_name << std::endl;
     }
     std::cout << std::endl;
     std::cout << "printing trie\n";
