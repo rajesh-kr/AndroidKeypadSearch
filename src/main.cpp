@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include "contact.hpp"
+#include "Trie.hpp"
 using std::string;
 
 std::map<char, int> T;
@@ -18,15 +20,22 @@ string convert_str_t9(string name) {
 
 int main() {
     // create a trie object
+    Trie t;
+
     // read the contact file
     create_T();
-    std::ifstream contacts("contacts.txt");
+    std::ifstream contacts_file("contacts.txt");
     string name, phone;
     string t9_name;
-    while(contacts >> name >> phone) {
+    while(contacts_file >> name >> phone) {
         t9_name = convert_str_t9(name);
-        std::cout << name << ":" << t9_name << std::endl;
+        Contact con(name, phone);
+        t.insert_node(t9_name, con);
+        std::cout << con.name << ":" << t9_name << std::endl;
     }
+    std::cout << std::endl;
+    std::cout << "printing trie\n";
+    t.print_t();
     // for each name of the file, convert it to t9 format and insert into trie
     // read the user input and search trie object
     return 0;
