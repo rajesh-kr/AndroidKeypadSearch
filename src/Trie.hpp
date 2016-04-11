@@ -16,7 +16,7 @@ class Trie {
         Trie();
         ~Trie();
         void insert_node(string s, Contact c);
-        int find_contact(string s);
+        int find_contacts(string s);
         void print_t();
 };
 

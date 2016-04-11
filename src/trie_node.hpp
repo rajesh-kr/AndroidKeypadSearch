@@ -9,6 +9,7 @@ struct TrieNode {
     bool term;
     std::vector<Contact> contacts;
     TrieNode();
+    ~TrieNode();
 };
 
 #endif

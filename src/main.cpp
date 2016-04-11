@@ -12,7 +12,7 @@ void create_T();
 string convert_str_t9(string name) {
     string t = "";
     int len = name.length();
-    for(int i = 0; i < len; i++) {
+    for(int i = 0; i < len; ++i) {
         t = t + std::to_string(T[name[i]]);
     }
     return t;
@@ -20,7 +20,7 @@ string convert_str_t9(string name) {
 
 int main() {
     // create a trie object
-    Trie t;
+    Trie* t = new Trie();
 
     // read the contact file
     create_T();
@@ -30,12 +30,20 @@ int main() {
     while(contacts_file >> name >> phone) {
         t9_name = convert_str_t9(name);
         Contact con(name, phone);
-        t.insert_node(t9_name, con);
+        t->insert_node(t9_name, con);
         //std::cout << con.name << ":" << t9_name << std::endl;
     }
-    std::cout << std::endl;
-    std::cout << "printing trie\n";
-    t.print_t();
+    //std::cout << std::endl;
+    //std::cout << "printing trie\n";
+    //t->print_t();
+
+    int count_c;
+    std::cout << "Searching with 46" << std::endl;
+    count_c = t->find_contacts("46");
+    std::cout << count_c << std::endl;
+    std::cout << "Searching with 7" << std::endl;
+    count_c = t->find_contacts("7");
+    std::cout << count_c << std::endl;
     // for each name of the file, convert it to t9 format and insert into trie
     // read the user input and search trie object
     return 0;
