@@ -27,17 +27,45 @@ CharMap::CharMap() {
     T['x'] = '9';
     T['y'] = '9';
     T['z'] = '9';
+    T['A'] = '2';
+    T['B'] = '2';
+    T['C'] = '2';
+    T['D'] = '3';
+    T['E'] = '3';
+    T['F'] = '3';
+    T['G'] = '4';
+    T['H'] = '4';
+    T['I'] = '4';
+    T['J'] = '5';
+    T['K'] = '5';
+    T['L'] = '5';
+    T['M'] = '6';
+    T['N'] = '6';
+    T['O'] = '6';
+    T['P'] = '7';
+    T['Q'] = '7';
+    T['R'] = '7';
+    T['S'] = '7';
+    T['T'] = '8';
+    T['U'] = '8';
+    T['V'] = '8';
+    T['W'] = '9';
+    T['X'] = '9';
+    T['Y'] = '9';
+    T['Z'] = '9';
 }
 
 CharMap::~CharMap() {
     T.clear();
 }
 
-std::string CharMap::convert_str_t9(std::string name) {
+std::string CharMap::convert(std::string name) {
     std::string t = ""; 
     int len = name.length();
+
     for(int i = 0; i < len; ++i) {
         t = t + T[name[i]];
     }   
+
     return t;
 }

@@ -5,11 +5,12 @@
 #include "contact.hpp"
 
 struct TrieNode {
-    TrieNode* numbers[10];
-    bool term;
-    std::vector<Contact> contacts;
-    TrieNode();
-    ~TrieNode();
+    bool term; // bool to mark the end node
+    TrieNode* numbers[10]; // TODO: define 10 as constant and use here
+    std::vector<Contact> contacts; // vector or contacts
+
+    TrieNode();  // Constructor
+    ~TrieNode(); // Destructor
 };
 
 #endif

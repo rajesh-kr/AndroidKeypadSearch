@@ -9,15 +9,14 @@ using std::string;
 
 class Trie {
     private:
-        TrieNode* trie;
-        std::set<Contact> soln;
-        void printutil(TrieNode* t);
+        TrieNode* trie; // root node for the trie
+        std::set<Contact> soln; // set containing the search result of Contact
+
     public:
         Trie();
         ~Trie();
-        void insert_node(string s, Contact c);
-        int find_contacts(string s);
-        void print_t();
+        void insert_node(string s, Contact c); // insert the contact specified by position string s
+        int find_contacts(string s); // string s is the search string for which we have to find Contact in Trie
 };
 
 #endif

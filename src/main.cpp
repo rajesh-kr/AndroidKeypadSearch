@@ -17,21 +17,24 @@ int main() {
     // read the contact file
     std::ifstream contacts_file("contacts.txt");
     string name, phone;
-    string t9_name;
+    string digit_name;
 
     // for each contact of the file, convert it to t9 format and insert into trie
     while(contacts_file >> name >> phone) {
-        t9_name = char_to_digit.convert_str_t9(name);
-        Contact con(name, phone);
+        digit_name = char_to_digit.convert(name);
+        Contact contact(name, phone);
 
         // insert the contact in trie
-        t->insert_node(t9_name, con);
+        t->insert_node(digit_name, contact);
     }
 
     // read the user input and search trie object
     int count_c;
     std::cout << "Searching with 46" << std::endl;
     count_c = t->find_contacts("46");
+    std::cout << count_c << std::endl;
+    std::cout << "Searching with 1" << std::endl;
+    count_c = t->find_contacts("1");
     std::cout << count_c << std::endl;
     std::cout << "Searching with 7" << std::endl;
     count_c = t->find_contacts("7");

@@ -7,10 +7,11 @@
 class CharMap {
     private:
         std::map<char, char> T;
+
     public:
         CharMap();
         ~CharMap();
-        std::string convert_str_t9(std::string s);
+        std::string convert(std::string s); // method to convert character name to digit
 };
 
 #endif
