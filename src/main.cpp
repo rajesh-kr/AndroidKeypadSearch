@@ -26,6 +26,7 @@ int main() {
 
         // insert the contact in trie
         t->insert_node(digit_name, contact);
+        t->insert_node(phone, contact);
     }
 
     // read the user input and search trie object
