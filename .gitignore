@@ -32,6 +32,6 @@
 
 # Ignore build and other directories
 build
-lib/*
-bin/*
+#lib/*
+#bin/*
 
