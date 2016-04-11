@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include "contact.hpp"
-#include "Trie.hpp"
+#include "trie.hpp"
 #include "char_to_digit.hpp"
 using std::string;
 
