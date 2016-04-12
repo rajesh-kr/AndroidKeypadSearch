@@ -10,8 +10,35 @@ Trie::~Trie() {
     delete trie;
 }
 
-void Trie::insert_node(string s, Contact c) {
+bool Trie::is_valid(string& str) {
+    int len = str.length();
+
+    for(int i = 0; i < len; ++i) {
+        if(str[i] < '0' || str[i] > '9') {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool Trie::insert_node(string input, Contact contact) {
     TrieNode* curr = trie;
+    string s;
+
+    // if phone number starts with '+', ignore that
+    if(input[0] == '+') {
+        s = input.substr(1);
+    }
+    else {
+        s = input;
+    }
+
+    // check if string s contains only digit
+    if(!is_valid(s)) {
+        return false;
+    }
+
     int len = s.length();
 
     // traverse using string s,
@@ -27,17 +54,12 @@ void Trie::insert_node(string s, Contact c) {
 
     // insert the contact at the bottom node
     curr->term = true;
-    curr->contacts.push_back(c);
+    curr->contacts.push_back(contact);
+
+    return true;
 }
 
-// print the Contacts to STDOUT
-void print_set(std::set<Contact>& soln) {
-    for(std::set<Contact>::iterator it = soln.begin(); it != soln.end(); ++it) {
-        std::cout << it->name << ":" << it->phone << std::endl;
-    }
-}
-
-void contacts_set(TrieNode* curr, std::set<Contact>& soln) {
+void Trie::contacts_set(TrieNode* curr, std::set<Contact>& soln) {
     // if this node contains Contact, put in the set
     if(curr->term == true) {
         for(std::vector<Contact>::iterator it = curr->contacts.begin(); it != curr->contacts.end(); ++it) {
@@ -53,7 +75,7 @@ void contacts_set(TrieNode* curr, std::set<Contact>& soln) {
     }
 }
 
-int Trie::find_contacts(string s) {
+std::set<Contact>& Trie::find_contacts(string s) {
     soln.clear();
     TrieNode* curr = trie;
     int len = s.length();
@@ -61,11 +83,11 @@ int Trie::find_contacts(string s) {
     // traverse down the trie till the input
     for(int i = 0; i < len; ++i) {
         int index = s[i] - '0';
-
-        if(curr->numbers[index] == NULL) {
+        if(index < 0 || index > 9 || curr->numbers[index] == NULL) {
+            // either input not in range or
             // reached dead end, no contacts found
             // return from here
-            return soln.size();
+            return soln;
         }
 
         curr = curr->numbers[index];
@@ -74,8 +96,5 @@ int Trie::find_contacts(string s) {
     // store all the contacts in set
     contacts_set(curr, soln);
 
-    // print the contacts to STDOUT
-    print_set(soln);
-
-    return soln.size();
+    return soln;
 }

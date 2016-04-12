@@ -64,7 +64,12 @@ std::string CharMap::convert(std::string name) {
     int len = name.length();
 
     for(int i = 0; i < len; ++i) {
-        t = t + T[name[i]];
+        if(T[name[i]] != 0) {
+            t = t + T[name[i]];
+        }
+        else {
+            t = t + name[i];
+        }
     }   
 
     return t;

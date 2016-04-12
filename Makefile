@@ -1,4 +1,3 @@
-# TODO
 CC := g++ 
 SRCDIR := src
 BUILDDIR := build
@@ -7,7 +6,7 @@ TARGET := bin/runner
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
-CFLAGS := -g # -Wall
+CFLAGS := -g -Wall
 LIB :=
 INC := -I include
 
