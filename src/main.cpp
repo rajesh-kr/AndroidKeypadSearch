@@ -15,21 +15,7 @@ int main() {
     // create a trie object
     Trie t;
 
-    // read the contact file
-    std::ifstream contacts_file("contacts.txt");
-    string name, phone;
-    string digit_name;
-
-    // for each contact of the file, convert it to t9 format and insert into trie
-    while(contacts_file >> name >> phone) {
-        digit_name = char_to_digit.convert(name);
-        Contact contact(name, phone);
-
-        // insert the contact in trie
-        t.insert_node(digit_name, contact);
-        t.insert_node(phone, contact);
-    }
-
+    // insert contact
     string f_name = "Kumar";
     string l_name = "Gaurav";
     string t1_n = char_to_digit.convert(f_name);
@@ -39,7 +25,6 @@ int main() {
     t.insert_node(t1_n, cont);
     t.insert_node(t2_n, cont);
     t.insert_node(ph, cont);
-
 
     // read the user input and search trie object
     std::set<Contact> count_c;

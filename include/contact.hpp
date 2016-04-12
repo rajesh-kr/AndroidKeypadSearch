@@ -10,6 +10,7 @@ struct Contact {
 
     Contact(string n, string p); // Constructor
     bool operator<(const Contact& c) const; // required for set comparison
+    bool operator==(const Contact& c) const; // required for set comparison
 };
 
 #endif
