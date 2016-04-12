@@ -13,6 +13,11 @@ Trie::~Trie() {
 bool Trie::is_valid(string& str) {
     int len = str.length();
 
+    if(len == 0) {
+        return false;
+    }
+
+    // check if string contains digit only
     for(int i = 0; i < len; ++i) {
         if(str[i] < '0' || str[i] > '9') {
             return false;
@@ -67,7 +72,7 @@ void Trie::contacts_set(TrieNode* curr, std::set<Contact>& soln) {
         }
     }
 
-    // TODO: Replace 10 with constant
+    // TODO: Replace 10 with some constant
     for(int i = 0; i < 10; ++i) {
         if(curr->numbers[i] != NULL) {
             contacts_set(curr->numbers[i], soln);
@@ -90,6 +95,7 @@ std::set<Contact>& Trie::find_contacts(string s) {
             return soln;
         }
 
+        // move down the trie
         curr = curr->numbers[index];
     }
 
