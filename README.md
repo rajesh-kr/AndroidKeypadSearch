@@ -24,10 +24,18 @@ It is explained below.<br>
 4. Store the contact object in `set`. Set is used to remove duplicates. We are storing the same contact using first name, last name and phone number. So, we can find the same contact from multiple path.<br>
 5. Output the set to the user.<br>
 
+### Assumptions
+
+1. To `Trie` class, the input is provided by the caller.<br>
+2. `Makefile` is not complete. It only makes `tester`.<br>
+
 ### Unit Test
 
-1. Checkout this project.
-2. From the base directory, run the following command
+For `Unit Test`, [Catch](https://github.com/philsquared/Catch) is used.<br>
+
+To run UTs<br>
+1. Checkout this project.<br>
+2. From the base directory of the project, run the following command:<br>
 ```bash
 $ make clean
 $ make tester
